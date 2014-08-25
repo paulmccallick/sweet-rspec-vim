@@ -34,9 +34,9 @@ function! SweetVimRspecRun(kind)
   endif
   
   if a:kind !=  "Previous" 
-    let t:SweetVimRspecTarget = expand("%:p") . " " 
+    let t:SweetVimRspecTarget = expand("%:p")
     if a:kind == "Focused"
-      let t:SweetVimRspecTarget .=  "-l " . line(".") . " " 
+      let t:SweetVimRspecTarget .=  ":" . line(".") . " " 
     endif
   endif
 
