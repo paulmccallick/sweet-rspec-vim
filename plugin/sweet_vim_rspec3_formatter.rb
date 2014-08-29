@@ -41,9 +41,9 @@ module RSpec
           output.puts data
         end
 
-        def example_passed(example)
+        def example_passed(notification)
           if ENV['SWEET_VIM_RSPEC_SHOW_PASSING'] == 'true'
-            output.puts "[PASS] #{example.full_description}\n"
+            output.puts "[PASS] #{notification.example.full_description}\n"
           end
         end
 
