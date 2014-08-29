@@ -26,8 +26,10 @@ function! SweetVimRspecRun(kind)
 
   if !exists('t:SweetVimRspecExecutable') || empty(t:SweetVimRspecExecutable)
     let t:SweetVimRspecExecutable =  g:SweetVimRspecUseBundler == 0 ? "" : "bundle exec " 
-    if  t:SweetVimRspecVersion  > 1
-      let t:SweetVimRspecExecutable .= "rspec --require rspec/legacy_formatters -r " . g:SweetVimRspecPlugin . "/sweet_vim_rspec2_formatter.rb" . " -f RSpec::Core::Formatters::SweetVimRspecFormatter "
+    if  t:SweetVimRspecVersion  == 2
+      let t:SweetVimRspecExecutable .= "rspec -r " . g:SweetVimRspecPlugin . "/sweet_vim_rspec2_formatter.rb" . " -f RSpec::Core::Formatters::SweetVimRspecFormatter "
+    elseif t:SweetVimRspecVersion == 3
+      let t:SweetVimRspecExecutable .= "rspec -r " . g:SweetVimRspecPlugin . "/sweet_vim_rspec3_formatter.rb" . " -f RSpec::Core::Formatters::SweetVimRspecFormatter "
     else
       let t:SweetVimRspecExecutable .= "spec  -br " . g:SweetVimRspecPlugin . "/sweet_vim_rspec1_formatter.rb" . " -f Spec::Runner::Formatter::SweetVimRspecFormatter "
     endif
